@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background-color: #000; /* Fond noir */
+            display: flex;
+            flex-direction: column; /* Affichage en colonne pour aligner les éléments */
+        }
+
+        .login-form {
+            width: 80%; /* Largeur de 80% de la fenêtre */
+            max-width: 400px; /* Largeur maximale de 400px */
+            margin: 20px auto; /* Espacement sur les côtés automatique et 20px en haut */
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8); /* Utilisation d'une couleur de fond semi-transparente */
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+            z-index: 1; /* Assure que la fenêtre de login est au-dessus du GIF */
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #007bff;
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .gif-container {
+            flex: 1; /* Le conteneur du GIF prendra tout l'espace disponible */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .background-gif {
+            max-width: 100%; /* Assurez-vous que le GIF ne dépasse pas la largeur du conteneur */
+            max-height: 100%; /* Assurez-vous que le GIF ne dépasse pas la hauteur du conteneur */
+        }
+    </style>
+</head>
+<body>
+    <div class="login-form">
+        <h2>Login</h2>
+        <form method="post">
+            <label for="username">Nom d'utilisateur:</label>
+            <input type="text" id="username" name="username" required>
+            <input type="submit" value="Se connecter">
+        </form>
+    </div>
+    <div class="gif-container">
+        <img class="background-gif" src="{{ url_for('static', filename='gif.gif') }}" alt="GIF">
+    </div>
+</body>
+</html>

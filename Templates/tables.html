@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion des Tables</title>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Raleway', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #2c3e50, #3498db);
+            color: #333;
+        }
+
+        .navbar {
+            background-color: #34495e;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #ecf0f1;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar h1 {
+            margin: 0;
+            font-size: 26px;
+            letter-spacing: 2px;
+        }
+
+        .navbar a {
+            color: #ecf0f1;
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+
+        .navbar a:hover {
+            color: #1abc9c;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 50px auto;
+            padding: 40px;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 0.6s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h2 {
+            color: #34495e;
+            margin-bottom: 30px;
+            text-align: center;
+            font-size: 28px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+        }
+
+        .table-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 0;
+            list-style-type: none;
+            margin: 0;
+        }
+
+        .table-item {
+            flex: 1 1 calc(33% - 40px);
+            max-width: calc(33% - 40px);
+            min-width: 250px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: #ecf0f1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .table-item:hover {
+            background-color: #1abc9c;
+            color: #fff;
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+        }
+
+        .table-link {
+            text-decoration: none;
+            color: inherit;
+            font-size: 20px;
+            transition: color 0.3s ease;
+            white-space: normal;
+            overflow: hidden;
+        }
+
+        .icon {
+            margin-top: 10px;
+            font-size: 48px;
+            color: #1abc9c;
+            transition: color 0.3s ease;
+        }
+
+        .table-item:hover .icon {
+            color: #fff;
+        }
+
+        .footer {
+            background-color: #34495e;
+            padding: 20px 40px;
+            text-align: center;
+            color: #ecf0f1;
+            box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .footer p {
+            margin: 0;
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+
+        .multicolor-text span {
+            display: inline-block;
+            animation: colorChange 2s infinite;
+        }
+
+        @keyframes colorChange {
+            0% { color: #e74c3c; }
+            25% { color: #f1c40f; }
+            50% { color: #2ecc71; }
+            75% { color: #3498db; }
+            100% { color: #e74c3c; }
+        }
+
+        .multicolor-text span:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .multicolor-text span:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+
+        .multicolor-text span:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+
+        .multicolor-text span:nth-child(4) {
+            animation-delay: 0.3s;
+        }
+
+        .multicolor-text span:nth-child(5) {
+            animation-delay: 0.4s;
+        }
+
+        .multicolor-text span:nth-child(6) {
+            animation-delay: 0.5s;
+        }
+
+        .multicolor-text span:nth-child(7) {
+            animation-delay: 0.6s;
+        }
+
+        .multicolor-text span:nth-child(8) {
+            animation-delay: 0.7s;
+        }
+
+        .multicolor-text span:nth-child(9) {
+            animation-delay: 0.8s;
+        }
+
+        .multicolor-text span:nth-child(10) {
+            animation-delay: 0.9s;
+        }
+
+        .multicolor-text span:nth-child(11) {
+            animation-delay: 1s;
+        }
+
+        .multicolor-text span:nth-child(12) {
+            animation-delay: 1.1s;
+        }
+
+        .multicolor-text span:nth-child(13) {
+            animation-delay: 1.2s;
+        }
+
+        .multicolor-text span:nth-child(14) {
+            animation-delay: 1.3s;
+        }
+
+        .multicolor-text span:nth-child(15) {
+            animation-delay: 1.4s;
+        }
+
+        .multicolor-text span:nth-child(16) {
+            animation-delay: 1.5s;
+        }
+
+        .multicolor-text span:nth-child(17) {
+            animation-delay: 1.6s;
+        }
+
+        .multicolor-text span:nth-child(18) {
+            animation-delay: 1.7s;
+        }
+
+        .multicolor-text span:nth-child(19) {
+            animation-delay: 1.8s;
+        }
+
+        .multicolor-text span:nth-child(20) {
+            animation-delay: 1.9s;
+        }
+
+        .multicolor-text span:nth-child(21) {
+            animation-delay: 2s;
+        }
+
+        .multicolor-text span:nth-child(22) {
+            animation-delay: 2.1s;
+        }
+
+        .multicolor-text span:nth-child(23) {
+            animation-delay: 2.2s;
+        }
+
+        .multicolor-text span:nth-child(24) {
+            animation-delay: 2.3s;
+        }
+
+        .multicolor-text span:nth-child(25) {
+            animation-delay: 2.4s;
+        }
+
+        .multicolor-text span:nth-child(26) {
+            animation-delay: 2.5s;
+        }
+
+        .multicolor-text span:nth-child(27) {
+            animation-delay: 2.6s;
+        }
+
+        .multicolor-text span:nth-child(28) {
+            animation-delay: 2.7s;
+        }
+
+        .multicolor-text span:nth-child(29) {
+            animation-delay: 2.8s;
+        }
+
+        .multicolor-text span:nth-child(30) {
+            animation-delay: 2.9s;
+        }
+
+        .multicolor-text span:nth-child(31) {
+            animation-delay: 3s;
+        }
+
+        /* Additional animations for smoother interactions */
+        .table-item:hover {
+            animation: smoothHover 0.3s ease;
+        }
+
+        @keyframes smoothHover {
+            from {
+                transform: translateY(0);
+            }
+            to {
+                transform: translateY(-5px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <h1>Gestion des Tables</h1>
+        <div>
+            <a href="#">Accueil</a>
+            <a href="#">À propos</a>
+            <a href="#">Contact</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>Tables de la base de donnée</h2>
+        <ul class="table-list">
+            {% for table in tables %}
+                <li class="table-item">
+                    <a href="{{ url_for('table_data', table=table) }}" class="table-link">
+                        <span>{{ table }}</span>
+                        <span class="icon"><i class="fas fa-database"></i></span>
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="footer">
+        <p>&copy; <span class="multicolor-text">
+            {% for char in "Samuel et les bits de couleurs." %}
+                <span>{{ char }}</span>
+            {% endfor %}
+        </span> Tous droits réservés.</p>
+    </div>
+</body>
+</html>

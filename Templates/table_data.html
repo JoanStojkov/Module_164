@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ table }}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Raleway', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #283048, #859398);
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            color: #283048;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 32px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+        }
+
+        .form-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .form-container label {
+            margin-right: 10px;
+            margin-bottom: 10px;
+            color: #283048;
+            font-weight: 600;
+        }
+
+        .form-container input[type="text"],
+        .form-container input[type="number"],
+        .form-container input[type="date"],
+        .form-container button {
+            padding: 8px 12px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            transition: border-color 0.3s;
+        }
+
+        .form-container input[type="text"]:focus,
+        .form-container input[type="number"]:focus,
+        .form-container input[type="date"]:focus,
+        .form-container button:focus {
+            border-color: #283048;
+            outline: none;
+        }
+
+        .form-container button {
+            cursor: pointer;
+            background-color: #283048;
+            color: white;
+            border: none;
+            transition: background-color 0.3s;
+        }
+
+        .form-container button:hover {
+            background-color: #1c2530;
+        }
+
+        .return-button-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .return-button {
+            background-color: #2ecc71;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .return-button:hover {
+            background-color: #27ae60;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-bottom: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #283048;
+            color: white;
+            text-transform: uppercase;
+        }
+
+        tr:hover {
+            background-color: #f2f2f2;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .delete-button {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .delete-button:hover {
+            background-color: darkred;
+        }
+
+        .edit-button {
+            background-color: orange;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .edit-button:hover {
+            background-color: darkorange;
+        }
+
+        .surprise-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .flower {
+            width: 50px;
+            height: 50px;
+            background-image: url('path_to_flower_image.png'); /* Replace with your flower image path */
+            background-size: contain;
+            background-repeat: no-repeat;
+            position: absolute;
+        }
+
+        .flower-1 {
+            top: -30px;
+            left: -30px;
+        }
+
+        .flower-2 {
+            top: -30px;
+            right: -30px;
+        }
+
+        .flower-3 {
+            bottom: -30px;
+            left: -30px;
+        }
+
+        .flower-4 {
+            bottom: -30px;
+            right: -30px;
+        }
+
+        .surprise-button {
+            background-color: #FFC0CB;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 12px;
+            font-size: 16px;
+            transition: background-color 0.3s, transform 0.3s;
+            position: relative;
+        }
+
+        .surprise-button:hover {
+            background-color: #FFB6C1;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>{{ table }}</h2>
+
+        <!-- Formulaire pour ajouter des données -->
+        <div class="form-container">
+            <form method="POST">
+                {% for column in columns %}
+                    {% if "ID" not in column %}
+                        <label for="{{ column }}">{{ column }}:</label>
+                        <input type="text" name="{{ column }}" id="{{ column }}" required>
+                    {% endif %}
+                {% endfor %}
+                <button type="submit" name="add">Ajouter</button>
+            </form>
+        </div>
+
+        <!-- Bouton Retour -->
+        <div class="return-button-container">
+            <form action="{{ url_for('tables') }}" method="GET">
+                <button type="submit" class="return-button">Retour</button>
+            </form>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    {% for column in columns %}
+                        <th>{{ column }}</th>
+                    {% endfor %}
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in data %}
+                    <tr>
+                        {% for column in columns %}
+                            <td>{{ row[column] }}</td>
+                        {% endfor %}
+                        <td class="action-buttons">
+                            <form method="POST" action="{{ url_for('delete_data', table=table, id=row[columns[0]]) }}" style="display: inline;">
+                                <button type="submit" class="delete-button">Supprimer</button>
+                            </form>
+                            <form method="GET" action="{{ url_for('edit_data', table=table, id=row[columns[0]]) }}" style="display: inline;">
+                                <button type="submit" class="edit-button">Modifier</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <!-- Bouton SURPRISE -->
+        <audio id="sound" src="{{ url_for('static', filename='sound.mp3') }}"></audio>
+        <div class="surprise-container">
+            <div class="flower flower-1"></div>
+            <div class="flower flower-2"></div>
+            <div class="flower flower-3"></div>
+            <div class="flower flower-4"></div>
+            <button id="surprise-button" class="surprise-button">SURPRISE</button>
+        </div>
+    </div>
+
+    <script>
+        // Ajout de l'événement de clic au bouton SURPRISE
+        document.getElementById('surprise-button').addEventListener('click', function() {
+            var audio = document.getElementById('sound');
+            audio.play();
+        });
+    </script>
+</body>
+</html>

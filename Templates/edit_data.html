@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modifier {{ table }}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Styles généraux */
+        body {
+            font-family: 'Raleway', sans-serif;
+            background-color: #1a1a1a; /* Couleur de fond */
+            color: #eee; /* Couleur du texte */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 90%;
+            background-color: #333; /* Couleur de fond du conteneur */
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.4); /* Ombre */
+            padding: 40px;
+            margin: 20px;
+            box-sizing: border-box;
+        }
+
+        /* Styles pour les titres */
+        h2 {
+            color: #03a9f4; /* Couleur du titre */
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 36px;
+            font-weight: 600;
+        }
+
+        /* Styles pour les formulaires */
+        form {
+            margin-top: 30px;
+        }
+
+        label {
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: block;
+            color: #ccc; /* Couleur du texte des étiquettes */
+        }
+
+        input[type="text"], input[type="number"], input[type="date"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #555; /* Couleur de la bordure des champs de saisie */
+            background-color: #222; /* Couleur de fond des champs de saisie */
+            color: #eee; /* Couleur du texte des champs de saisie */
+            box-sizing: border-box;
+            transition: border-color 0.3s ease; /* Transition pour le changement de couleur de la bordure */
+        }
+
+        input[type="text"]:focus, input[type="number"]:focus, input[type="date"]:focus {
+            border-color: #03a9f4; /* Couleur de la bordure lorsqu'un champ a le focus */
+        }
+
+        /* Style pour le bouton */
+        button {
+            padding: 15px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 20px;
+            background-color: #03a9f4; /* Couleur du bouton */
+            color: #fff; /* Couleur du texte du bouton */
+            transition: background-color 0.3s ease; /* Transition pour le changement de couleur au survol */
+            display: block;
+            margin: 20px auto 0; /* Espacement du haut, centrage horizontal */
+        }
+
+        button:hover {
+            background-color: #0288d1; /* Couleur au survol du bouton */
+        }
+
+        /* Style pour la table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #555; /* Bordure inférieure */
+            color: #eee; /* Couleur du texte */
+        }
+
+        th {
+            background-color: #333; /* Couleur de fond de l'en-tête */
+            font-weight: 600;
+        }
+
+        tr:hover {
+            background-color: #444; /* Couleur au survol de la ligne */
+        }
+
+        /* Animation pour les transitions */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Modifier {{ table }}</h2>
+
+        <!-- Formulaire pour modifier les données -->
+        <form method="POST">
+            <table>
+                {% for column in columns %}
+                    {% if "ID" not in column %}
+                        <tr>
+                            <th>{{ column }}</th>
+                            <td><input type="text" name="{{ column }}" id="{{ column }}" value="{{ data[column] }}" required></td>
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+            </table>
+            <button type="submit">Enregistrer</button>
+        </form>
+    </div>
+</body>
+</html>
