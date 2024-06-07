@@ -1,44 +1,56 @@
 # Guide d'installation et de configuration
 
-## Étape 1: Installer un serveur MySQL
-1. Téléchargez et installez Laragon (Full version) depuis ce lien : [Laragon Download](https://laragon.org/download/).
+## Étape 1 : Installation des fichiers fournis sur GitHub
+1. Installez les fichiers fournis et placez-les dans un emplacement facilement accessible.
 
-## Étape 2: Créer et configurer une nouvelle base de données
+## Étape 2 : Installation d'un serveur MySQL
+1. Téléchargez et installez Laragon (version complète) depuis ce lien : [Laragon Download](https://laragon.org/download/).
+
+## Étape 3 : Création et configuration d'une nouvelle base de données
 1. Après l'installation de Laragon, ouvrez Laragon.
-2. Cliquez sur le bouton **MySQL** dans le tableau de bord de Laragon pour démarrer le serveur MySQL.
-3. Utilisez l'interface phpMyAdmin incluse dans Laragon pour créer une nouvelle base de données. Vous pouvez accéder à phpMyAdmin en cliquant sur **Menu** -> **Database** -> **phpMyAdmin**.
+2. Cliquez sur le bouton **Start All** dans le tableau de bord de Laragon pour démarrer le serveur MySQL.
+3. Cliquez ensuite sur le bouton **Database** pour ouvrir une session.
+4. Une fois dans HeidiSQL, allez dans **Fichier -> Exécuter un fichier SQL...**. Naviguez jusqu'au dump téléchargé préalablement et exécutez-le.
+5. Vérifiez que la base de données a bien été configurée.
 
-## Étape 3: Installer Python
+## Étape 4 : Installation de Python
 1. Téléchargez et installez Python depuis ce lien : [Python Downloads](https://www.python.org/downloads/).
 
-## Étape 4: Installer PyCharm (Community Edition)
+## Étape 5 : Installation de PyCharm (Community Edition)
 1. Téléchargez et installez PyCharm Community Edition depuis ce lien : [PyCharm Download](https://www.jetbrains.com/pycharm/download/?section=windows).
 
-## Étape 5: Créer un nouveau projet dans PyCharm
+## Étape 6 : Importation du projet dans PyCharm
 1. Ouvrez PyCharm.
-2. Cliquez sur **Create New Project**.
-3. Changez le répertoire pour ce nouveau projet en créant un nouveau répertoire “vide” sur votre disque local.
-4. Sélectionnez ce répertoire pour votre nouveau projet PyCharm.
+2. Cliquez sur **File -> Open**, puis ouvrez le fichier **projet**.
 
-En suivant ces étapes, vous aurez un environnement de développement complet pour commencer à travailler sur votre projet avec Python, MySQL, et PyCharm.
+## Étape 7 : Installation des modules nécessaires utilisés dans le code main.py
+Le projet est organisé de la manière suivante :
 
-## Étape 6: Créer une structure pour les répértoire
     Projet
-    ├── Database // Contien tout les fichier en annexe mcd, mld, dictionnaire de donnée, etc..
-    ├── static // contien le css et les image, gif, fichier mp3 que je vais utiliser dans mon code 
+    ├── Database // Contient tous les fichiers annexes : MCD, MLD, dictionnaire de données, etc.
+    ├── static // Contient le CSS et les images, GIF, fichiers MP3 utilisés dans le code
     │   ├── css.css
     │   ├── gif.gif
     │   └── sound.mp3
-    ├── Templates // Contien mes fichier html pour les ifférente page de mon projet
+    ├── Templates // Contient les fichiers HTML pour les différentes pages du projet
     │   ├── edit_data.html
     │   ├── login.html
     │   ├── table_data.html
     │   └── tables.html
-    ├── venv // Contien le fichier Python principal avec les requêtes SQL néecaisaire pour faire fonctionner mon crud en utilisatn flask 
+    ├── venv // Contient l'environnement virtuel Python avec les requêtes SQL nécessaires pour faire fonctionner le CRUD en utilisant Flask
     │   └── library root
     └── main.py
 
-## Etape 7: Installer les modules nécessaire utiliser dans le code main.py
-En placant votre curseur sur les modules utiliser dans le code vous aurez la posibilité de les installées 
-1. import flask 
-2. import pymysql.cursors
+1. Ouvrez le fichier main.py.
+2. En plaçant votre curseur sur les modules utilisés dans le code, vous aurez la possibilité de les installer.
+3. Exemple de modules à installer :
+    ```python
+    import flask
+    import pymysql.cursors
+    ```
+
+## Étape 8 : Exécution du fichier main.py
+1. Ouvrez le fichier main.py.
+2. Utilisez la combinaison de touches **Shift + F10** pour exécuter le fichier.
+3. Dans le terminal, cliquez sur l'adresse suivante : [http://127.0.0.1:5000](http://127.0.0.1:5000).
+4. Connectez-vous avec l'utilisateur root.

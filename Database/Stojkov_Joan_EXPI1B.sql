@@ -1,23 +1,23 @@
--- Lecture des colonnes et des données
-SHOW COLUMNS FROM <table>;
-SELECT * FROM <table>;
-SELECT * FROM <table> WHERE <primary_key> = %s;
-SHOW KEYS FROM <table> WHERE Key_name = 'PRIMARY';
+-- Afficher les colonnes d'une table
+SHOW COLUMNS FROM t_adresse;
 
--- Ajout de données
-INSERT INTO <table> (<columns>) VALUES (<placeholders>);
+-- Sélectionner toutes les données d'une table
+SELECT * FROM t_clients;
 
--- Mise à jour des données
-UPDATE <table> SET <column1> = %s, <column2> = %s, ... WHERE <primary_key> = %s;
+-- Sélectionner les données par clé primaire
+SELECT * FROM t_commande WHERE ID_commande = 10;
 
--- Suppression de données
-DELETE FROM <table> WHERE <primary_key> = %s;
+-- Afficher les clés primaires d'une table
+SHOW KEYS FROM t_habits WHERE Key_name = 'PRIMARY';
 
--- Suppression des entrées dans les tables relationnelles
-DELETE FROM t_clients_adresse WHERE fk_clients = %s;
-DELETE FROM t_clients_commande WHERE fk_clients = %s;
+-- Ajouter des données
+INSERT INTO t_adresse (Rue, NPA, NO_Rue, Ville) VALUES ('Avenue des Fleurs', 1234, 5, 'Paris');
 
-DELETE FROM t_clients_commande WHERE fk_commande = %s;
-DELETE FROM t_commande_habits WHERE fk_commande = %s;
+-- Mettre à jour des données
+UPDATE t_clients SET Nom = 'Smith', Prenom = 'John' WHERE ID_clients = 15;
 
-DELETE FROM t_commande_habits WHERE fk_habits = %s;
+-- Supprimer des données
+DELETE FROM t_habits WHERE ID_habits = 8;
+
+-- Supprimer des entrées dans les tables relationnelles
+DELETE FROM t_clients_adresse WHERE fk_clients = 20;
