@@ -5,9 +5,10 @@
 
 ## Étape 2: Créer et configurer une nouvelle base de données
 1. Après l'installation de Laragon, ouvrez Laragon.
-2. Cliquez sur le bouton **MySQL** dans le tableau de bord de Laragon pour démarrer le serveur MySQL.
-3. Utilisez l'interface phpMyAdmin incluse dans Laragon pour créer une nouvelle base de données. Vous pouvez accéder à phpMyAdmin en cliquant sur **Menu** -> **Database** -> **phpMyAdmin**.
-
+2. Cliquez sur le bouton **Start All** dans le tableau de bord de Laragon pour démarrer le serveur MySQL.
+3. Puis cliquez sur le bouton database afin d'ouvrir un session 
+4. Une fois dans HediSQL aller dans fichier -> Exécuter un fichier SQL..
+![alt text](image.png)
 ## Étape 3: Installer Python
 1. Téléchargez et installez Python depuis ce lien : [Python Downloads](https://www.python.org/downloads/).
 
